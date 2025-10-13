@@ -23,7 +23,7 @@
             console.log("Latitude:", position.coords.latitude);
             console.log("Longitude:", position.coords.longitude);
 
-            connection.invoke("SendLocationUpdate", position.coords.latitude, position.coords.longitude)
+            connection.invoke("SendLocationUpdate", 1 ,position.coords.latitude, position.coords.longitude)
                 .catch(err => console.error(err.toString()));
             }, function (error) {
             console.error("Error getting location", error);
@@ -39,3 +39,4 @@
     <button type="button" class="btn btn-primary" id="StartTrip" style="margin-left: 330px; margin-top: 160px;">Start Trip</button>
 </body>
 </html>
+
