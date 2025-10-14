@@ -21,16 +21,17 @@
             navigator.geolocation.getCurrentPosition(function (position) {
             console.log("Location obtained!");
             console.log("Latitude:", position.coords.latitude);
-            console.log("Longitude:", position.coords.longitude);
-
-            connection.invoke("SendLocationUpdate", 1 ,position.coords.latitude, position.coords.longitude)
-                .catch(err => console.error(err.toString()));
-            }, function (error) {
+            console.log("Longitude:", position.coords.longitude);}, function (error) {
             console.error("Error getting location", error);
             });
-        } else {
-            console.log("Browser does not support geolocation.");
-        }
+            }
+        else {console.log("Browser does not support geolocation.");}
+
+        setInterval(async () => {
+            const position = await getCurrentPosition(); // GPS
+            connection.invoke("SendLocationUpdate", position.coords.latitude, position.coords.longitude)
+                            .catch(err => console.error(err.toString()));
+            }, 5000); // كل 5 ثواني
         });
     });
 </script>
@@ -39,4 +40,3 @@
     <button type="button" class="btn btn-primary" id="StartTrip" style="margin-left: 330px; margin-top: 160px;">Start Trip</button>
 </body>
 </html>
-
