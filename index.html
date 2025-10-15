@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Latitude:", position.coords.latitude);
         console.log("Longitude:", position.coords.longitude);
 
-        connection.invoke("SendLocationUpdate", 1,
+        connection.invoke("SendLocationUpdate", DriverId,
             position.coords.latitude, position.coords.longitude)
           .catch(err => console.error(err.toString()));
       } catch (err) {
