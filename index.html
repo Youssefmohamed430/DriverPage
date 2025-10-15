@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(async () => {
       try {
+        const position = await getCurrentPositionPromise();
         const lat = Number(position.coords.latitude);
         const lon = Number(position.coords.longitude);
         const driverId = String(DriverId); 
@@ -59,3 +60,4 @@ document.addEventListener("DOMContentLoaded", function () {
     style="margin-left: 330px; margin-top: 160px;">Start Trip</button>
 </body>
 </html>
+
