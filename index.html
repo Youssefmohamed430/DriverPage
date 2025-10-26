@@ -45,11 +45,23 @@
 
           console.log("📍 Tracking started...");
 
+          const position = await getCurrentPositionPromise();
+          const lat = Number(position.coords.latitude);
+          const lon = Number(position.coords.longitude);
+
+          function moveTowards(busLat = lat, busLon = lon, stationLat = 31.2091350548684, stationLon = 30.0931234360868 , step = 0.0005) {
+            const newLat = busLat + Math.sign(stationLat - busLat) * step;
+            const newLon = busLon + Math.sign(stationLon - busLon) * step;
+            return { newLat, newLon };
+          }
+
+
           setInterval(async () => {
             try {
-              const position = await getCurrentPositionPromise();
-              const lat = Number(position.coords.latitude);
-              const lon = Number(position.coords.longitude);
+              // simulate moving bus closer
+              const newPosition = moveTowards(lat, lon);
+              lat = newPosition.newLat;
+              lon = newPosition.newLon;
               const driverId = String(DriverId);
 
               console.log("Sending ->", { driverId, lat, lon });
