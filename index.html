@@ -67,15 +67,9 @@
               console.log("Sending ->", { driverId, lat, lon });
 
               connection
-                .invoke(
-                  "SendLocationUpdate",
-                  DriverId,
-                  position.coords.latitude,
-                  position.coords.longitude
-                )
+                .invoke("SendLocationUpdate" , DriverId , lat , lon)
                 .catch((err) => console.error(err.toString()));
-
-              updateCount++;
+                updateCount++;
             } catch (err) {
               console.error("Error getting position", err);
             }
