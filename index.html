@@ -46,8 +46,8 @@
           console.log("📍 Tracking started...");
 
           const position = await getCurrentPositionPromise();
-          const lat = Number(position.coords.latitude);
-          const lon = Number(position.coords.longitude);
+          let lat = Number(position.coords.latitude);
+          let lon = Number(position.coords.longitude);
 
           function moveTowards(busLat = lat, busLon = lon, stationLat = 31.2091350548684, stationLon = 30.0931234360868 , step = 0.0005) {
             const newLat = busLat + Math.sign(stationLat - busLat) * step;
