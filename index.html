@@ -45,11 +45,14 @@
 
           console.log("📍 Tracking started...");
 
-          const position = await getCurrentPositionPromise();
-          let lat = Number(position.coords.latitude);
-          let lon = Number(position.coords.longitude);
+          // const position = await getCurrentPositionPromise();
+          // let lat = Number(position.coords.latitude);
+          // let lon = Number(position.coords.longitude);
 
-          function moveTowards(busLat = lat, busLon = lon, stationLat = 31.2091350548684, stationLon = 30.0931234360868) {
+          let lat = 31.2091350548684;
+          let lon = 30.0931234360868;
+
+          function moveTowards(busLat = lat , busLon = lon , stationLat = 31.211304934051, stationLon = 30.0843569555299) {
               // Calculate distance
               const latDiff = stationLat - busLat;
               const lonDiff = stationLon - busLon;
