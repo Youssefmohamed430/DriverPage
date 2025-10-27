@@ -49,11 +49,24 @@
           let lat = Number(position.coords.latitude);
           let lon = Number(position.coords.longitude);
 
-          function moveTowards(busLat = lat, busLon = lon, stationLat = 31.2091350548684, stationLon = 30.0931234360868 , step = 0.0005) {
-            const newLat = busLat + Math.sign(stationLat - busLat) * step;
-            const newLon = busLon + Math.sign(stationLon - busLon) * step;
-            return { newLat, newLon };
-          }
+          function moveTowards(busLat = lat, busLon = lon, stationLat = 31.2091350548684, stationLon = 30.0931234360868) {
+              // Calculate distance
+              const latDiff = stationLat - busLat;
+              const lonDiff = stationLon - busLon;
+              const distance = Math.sqrt(latDiff * latDiff + lonDiff * lonDiff);
+              
+              // If very close, don't move
+              if (distance < 0.0001) {
+                return { newLat: busLat, newLon: busLon };
+              }
+              
+              // Move proportionally in both directions
+              const step = 0.0005;
+              const newLat = busLat + (latDiff / distance) * step;
+              const newLon = busLon + (lonDiff / distance) * step;
+              
+              return { newLat, newLon };
+            }
 
 
           setInterval(async () => {
