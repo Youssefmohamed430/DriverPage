@@ -12,7 +12,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       let updateCount = 0;
-      var DriverId = "d8b1eeac-25b4-4a4e-a2bf-7ad7fc67f612"; //prompt("Enter DriverId!");
+      var DriverId = "d8b1eeac-25b4-4a4e-a2bf-7ad7fc67f612"; 
       var TripId = prompt("Enter TripId!");
       if (!DriverId) {
         console.error("DriverId is empty or cancelled. Aborting.");
@@ -52,7 +52,7 @@
           let lat = 31.2091350548684;
           let lon = 30.0931234360868;
 
-          function moveTowards(busLat = lat , busLon = lon , stationLat = 31.211304934051, stationLon = 30.0843569555299) {
+          function moveTowards(busLat = lat , busLon = lon , stationLat = 31.2073182864524, stationLon = 30.0763591352822) {
               // Calculate distance
               const latDiff = stationLat - busLat;
               const lonDiff = stationLon - busLon;
