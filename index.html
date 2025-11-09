@@ -50,11 +50,14 @@
           // let lon = Number(position.coords.longitude);
 
           // lat and lon to qawmia station
-          let lat = 31.2091350548684;
-          let lon = 30.0931234360868;
+          let qawmialat = 31.2091350548684;
+          let qawmialon = 30.0931234360868;
+          // lat and lon to bohy station
+          let bohylat = 31.211304934051;
+          let bohylon = 30.0843569555299;
           // lat and lon to imbaba station
-          let stationlat = 31.2073182864524;
-          let stationlon = 30.0763591352822;
+          let imbabastationlat = 31.2073182864524;
+          let imbabastationlon = 30.0763591352822;
 
 
           function moveTowards(busLat , busLon , stationLat, stationLon) {
@@ -80,7 +83,7 @@
           setInterval(async () => {
             try {
               // simulate moving bus closer
-              const newPosition = moveTowards(lat, lon,stationlat, stationlon);
+              const newPosition = moveTowards(qawmialat, qawmialon,bohylat, bohylon);
               lat = newPosition.newLat;
               lon = newPosition.newLon;
               const driverId = String(DriverId);
@@ -94,8 +97,7 @@
             } catch (err) {
               console.error("Error getting position", err);
             }
-
-            if (updateCount >= 12) {
+            if (updateCount >= 24) {
               const url = `https://citybus.runasp.net/Tracking/${TripId}/${lon}/${lat}`;
 
               fetch(url, {
