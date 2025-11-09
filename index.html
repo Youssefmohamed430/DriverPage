@@ -49,10 +49,15 @@
           // let lat = Number(position.coords.latitude);
           // let lon = Number(position.coords.longitude);
 
+          // lat and lon to bohy station
           let lat = 31.2091350548684;
           let lon = 30.0931234360868;
+          // lat and lon to imbaba station
+          let stationlat = 31.2073182864524;
+          let stationlon = 30.0763591352822;
 
-          function moveTowards(busLat = lat , busLon = lon , stationLat = 31.2073182864524, stationLon = 30.0763591352822) {
+
+          function moveTowards(busLat , busLon , stationLat, stationLon) {
               // Calculate distance
               const latDiff = stationLat - busLat;
               const lonDiff = stationLon - busLon;
@@ -75,7 +80,7 @@
           setInterval(async () => {
             try {
               // simulate moving bus closer
-              const newPosition = moveTowards(lat, lon);
+              const newPosition = moveTowards(lat, lon,stationlat, stationlon);
               lat = newPosition.newLat;
               lon = newPosition.newLon;
               const driverId = String(DriverId);
