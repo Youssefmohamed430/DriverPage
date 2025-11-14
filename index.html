@@ -85,7 +85,7 @@
           setInterval(async () => {
             try {
               // simulate moving bus closer
-              const newPosition = moveTowards(qawmialat, qawmialon,bohylat, bohylon);
+              const newPosition = moveTowards(lat, lon,bohylat, bohylon);
               lat = newPosition.newLat;
               lon = newPosition.newLon;
               const driverId = String(DriverId);
