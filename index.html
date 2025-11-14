@@ -84,10 +84,6 @@
 
           setInterval(async () => {
             try {
-              // simulate moving bus closer
-              const newPosition = moveTowards(lat, lon,bohylat, bohylon);
-              lat = newPosition.newLat;
-              lon = newPosition.newLon;
               const driverId = String(DriverId);
 
               console.log("Sending ->", { driverId, lat, lon });
@@ -99,6 +95,12 @@
             } catch (err) {
               console.error("Error getting position", err);
             }
+
+              // simulate moving bus closer
+              const newPosition = moveTowards(lat, lon,bohylat, bohylon);
+              lat = newPosition.newLat;
+              lon = newPosition.newLon;
+
             if (updateCount >= 24) {
               const url = `https://citybus.runasp.net/Tracking/${TripId}/${lon}/${lat}`;
 
