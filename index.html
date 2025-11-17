@@ -101,7 +101,7 @@
               lat = newPosition.newLat;
               lon = newPosition.newLon;
 
-            if (updateCount >= 5) {
+            if (updateCount >= 12) {
               const url = `https://citybus.runasp.net/Tracking/${TripId}/${lon}/${lat}`;
 
               fetch(url, {
